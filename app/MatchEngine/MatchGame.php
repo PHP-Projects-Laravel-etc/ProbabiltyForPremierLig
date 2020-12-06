@@ -62,4 +62,11 @@ class MatchGame
             'scoreForAway' => $scoresForAway,
         ];
     }
+
+
+    public function getGoalDifference($scoresForTeam, $scoresForAgainstTeam) {
+        return $scoresForTeam - $scoresForAgainstTeam;
+    }
+
+
 }

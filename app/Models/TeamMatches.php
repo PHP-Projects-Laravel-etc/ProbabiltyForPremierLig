@@ -16,6 +16,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $home_team_score
  * @property integer $away_team_score
  * @property boolean $played
+ * @property boolean $week
  * @property Carbon  $created_at
  * @property Carbon  $updated_at
  * @property string  $deleted_at
@@ -34,6 +35,7 @@ class TeamMatches extends Model
         'home_team_score' => 'integer',
         'away_team_score' => 'integer',
         'played'          => 'boolean',
+        'week'          => 'boolean',
     ];
 
     protected $fillable = [
@@ -42,6 +44,7 @@ class TeamMatches extends Model
         'home_team_score',
         'away_team_score',
         'played',
+        'week',
     ];
 
     public function homeTeam()

@@ -17,7 +17,7 @@ class TeamController extends Controller
 
     public function index() {
         $teams = Team::all();
-        return view('team.index')->with($teams);
+        return view('teams.index')->withTeams($teams);
     }
 
     public function store(Request $request) {

@@ -21,14 +21,25 @@ class PremierLigController extends Controller
     public function createPlan()
     {
         $teams = Team::all();
-        $teamNames = $teams->pluck('id');
-        $premierLigPlan = LigPlan::createPlan($teamNames);
-        TeamMatches::insert($premierLigPlan);
+        $teamNames = $teams->pluck('id')->toArray();
+        $premierLigWeeklyPlan = LigPlan::createPlan($teamNames);
+        foreach ($premierLigWeeklyPlan as $week) {
+            foreach ($week as $match) {
+                TeamMatches::create([
+                    'home_team_id' => $match['home_team_id'],
+                    'away_team_id' => $match['away_team_id'],
+                    'week'         => $match['week'],
+                ]);
+            }
+        }
     }
 
 
     public function runMatch(Request $request)
     {
+        $matches = TeamMatches::where('played', false)->get();
+        $s = new Simulation();
+        $s->runSimulationForAllTeams($matches);
         $week = $request->input('week');
         $week = 1;
         $matches = TeamMatches::where('week', $week)->get();
@@ -41,17 +52,8 @@ class PremierLigController extends Controller
             $match->save();
             $match->away_team_score = $result['scoreForHome'];
             $match->home_team_score = $result['scoreForAway'];
-
-            if (!$homeTeam instanceof Team) {
-                return false;
-            }
-
-            if (!$awayTeam instanceof Team) {
-                return false;
-            }
             $homeTeam->updateTeamStatus($match->home_team_score, $match->away_team_score);
             $awayTeam->updateTeamStatus($match->away_team_score, $match->home_team_score,);
-            return true;
         }
     }
 }
