@@ -62,10 +62,4 @@ class MatchGame
             'scoreForAway' => $scoresForAway,
         ];
     }
-
-    public function updateFixture()
-    {
-    }
-
-
 }

@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property integer $away_team_id
  * @property integer $home_team_score
  * @property integer $away_team_score
+ * @property boolean $played
  * @property Carbon  $created_at
  * @property Carbon  $updated_at
  * @property string  $deleted_at
@@ -32,6 +33,7 @@ class TeamMatches extends Model
         'away_team_id'    => 'integer',
         'home_team_score' => 'integer',
         'away_team_score' => 'integer',
+        'played'          => 'boolean',
     ];
 
     protected $fillable = [
@@ -39,13 +41,21 @@ class TeamMatches extends Model
         'away_team_id',
         'home_team_score',
         'away_team_score',
+        'played',
     ];
 
-    public function homeTeam() {
-       return  $this->hasOne(Team::class,'id','home_team_id');
+    public function homeTeam()
+    {
+        return $this->hasOne(Team::class, 'id', 'home_team_id');
     }
 
-    public function awayTeam() {
-        return  $this->belongsTo(Team::class,'id','away_team_id');
+    public function awayTeam()
+    {
+        return $this->hasOne(Team::class, 'id', 'away_team_id');
+    }
+
+    public function scopeGetHighestWeek($query)
+    {
+        return $query->orderBy('week', 'DESC')->first()->week;
     }
 }

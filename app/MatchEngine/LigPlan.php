@@ -4,6 +4,7 @@
 namespace App\MatchEngine;
 
 
+use App\Models\TeamMatches;
 use Carbon\Carbon;
 
 class LigPlan
@@ -21,11 +22,24 @@ class LigPlan
                 $plan[] = [
                     'home_team_id' => $teams[$i],
                     'away_team_id' => $teams[$j],
-                    'week'   => $date,
+                    'week'         => $date,
                 ];
                 $date += 1;
             }
         }
         return $plan;
     }
+
+    public static function getPlanWithImportantData(): array
+    {
+        $matches = TeamMatches::where('played', false)->get();
+        return $matches->map(function ($match) {
+            return [
+                'homeTeam' => $match->homeTeam,
+                'awayTeam' => $match->homeTeam,
+            ];
+        })->toArray();
+    }
+
+
 }

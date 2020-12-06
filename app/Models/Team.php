@@ -105,10 +105,9 @@ class Team extends Model
 
 
 
-    public function updateTeamStatus() {
+    public function updateTeamStatus($teamScore, $againstTeamScore) {
         $this->incrementPlayed();
-        $this->updateStatusOfGame();
-        $this->updateGoals();
-        $this->save();
+        $this->updateStatusOfGame($teamScore, $againstTeamScore);
+        $this->updateGoals($teamScore, $againstTeamScore);
     }
 }

@@ -2,24 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d864fa4-4168-4019-b2a3-f51a649c7efb" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/MatchEngine/Simulation.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PremierLigController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PremierLigController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TeamController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TeamController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/MatchEngine/LigPlan.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MatchEngine/LigPlan.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/MatchEngine/Match.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MatchEngine/MatchGame.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/MatchEngine/TeamStats/AgilityStatCalculator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MatchEngine/TeamStats/AgilityStatCalculator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/MatchEngine/TeamStats/IntelligenceStatCalculator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MatchEngine/TeamStats/IntelligenceStatCalculator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/MatchEngine/TeamStats/StatCalculatorInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MatchEngine/TeamStats/StatCalculatorInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/MatchEngine/TeamStats/StrengthStatCalculator.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MatchEngine/TeamStats/StrengthStatCalculator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/PremierLig.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/PremierLigPlan.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/MatchEngine/MatchGame.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/MatchEngine/MatchGame.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Team.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Team.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/TeamMatches.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/TeamMatches.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_06_082045_create_teams_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_06_082045_create_teams_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_06_082458_create_premier_ligs_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_06_084045_create_team_matches_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_06_084045_create_team_matches_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_06_093703_create_premier_lig_plans_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +29,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/opis/closure" />
@@ -178,11 +168,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1607242547718</updated>
-      <workItem from="1607242550803" duration="14502000" />
+      <workItem from="1607242550803" duration="18457000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/app/Http/Controllers/PremierLigController.php</url>
+          <line>34</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
