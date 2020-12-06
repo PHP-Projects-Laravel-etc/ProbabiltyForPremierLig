@@ -20,3 +20,5 @@ Route::get('/', function () {
 Route::get('/teams', 'App\Http\Controllers\TeamController@index')->name('team.index');
 Route::post('/teams', 'App\Http\Controllers\TeamController@post')->name('team.index');
 
+Route::get('/createPlan', 'App\Http\Controllers\PremierLigController@createPlan')->name('lig.createPlan');
+
