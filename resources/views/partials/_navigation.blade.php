@@ -9,12 +9,6 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/teams">Teams <span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/games">Games</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/simulation">Simulation</a>
-            </li>
         </ul>
     </div>
 </nav>
