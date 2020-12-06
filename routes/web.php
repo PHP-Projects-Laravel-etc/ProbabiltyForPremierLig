@@ -17,8 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/createPlan', 'App\Http\Controllers\PremierLigController@createPlan')->name('lig.createPlan');
+Route::get('/createPlan', 'App\Http\Controllers\PremierLigController@createPlan')->name('plan.create');
 Route::get('/teams', 'App\Http\Controllers\TeamController@index')->name('team.index');
-Route::get('/matches', 'App\Http\Controllers\PremierLigController@index')->name('match.index');
-Route::get('/runMatch', 'App\Http\Controllers\PremierLigController@runMatch')->name('lig.createPlan');
+Route::get('/matches/{week?}', 'App\Http\Controllers\PremierLigController@getWeeksMatch')->name('match.index');
+Route::get('/runMatch/{week}', 'App\Http\Controllers\PremierLigController@runMatch')->name('match.run');
+Route::get('/runSimulation', 'App\Http\Controllers\PremierLigController@runSimulation')->name('match.simulation');
 

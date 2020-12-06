@@ -34,8 +34,8 @@ class TeamMatches extends Model
         'away_team_id'    => 'integer',
         'home_team_score' => 'integer',
         'away_team_score' => 'integer',
-        'played'          => 'boolean',
-        'week'          => 'boolean',
+        'played'          => 'integer',
+        'week'            => 'integer',
     ];
 
     protected $fillable = [
@@ -60,5 +60,14 @@ class TeamMatches extends Model
     public function scopeGetHighestWeek($query)
     {
         return $query->orderBy('week', 'DESC')->first()->week;
+    }
+
+    public static function getNextWeek()
+    {
+        $nestWeek = self::where('played', 0)->orderBy('week', 'ASC')->first();
+        if ($nestWeek) {
+            return $nestWeek->week;
+        }
+        return 1;
     }
 }

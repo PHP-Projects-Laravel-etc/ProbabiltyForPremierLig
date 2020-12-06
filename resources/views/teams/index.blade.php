@@ -36,8 +36,17 @@
         </table>
 
         <div class="row mt-5">
-            <button class="btn btn-success btn-block"><a href="/matches">Go To Match Results</a></button>
+            <div class="col-md-4">
+                <a href="{{route('match.index',['week' => 1])}}">
+                    <button class="btn btn-success btn-block">
+                        Go To Match Results
+                    </button>
+                </a>
+            </div>
 
+            <form action="/createPlan" method="get">
+                <button type="submit" class="btn btn-primary btn-block" formmethod="get">Create Plan</button>
+            </form>
         </div>
     </div>
 @endsection

@@ -85,7 +85,7 @@ class Team extends Model
                 $this->lost += 1;
                 break;
             default:
-                $this->drawn += 1;
+                $this->draw += 1;
                 $this->pointsWon = 1;
                 $this->points += $this->pointsWon;
         }
@@ -105,12 +105,6 @@ class Team extends Model
         return $this;
     }
 
-    public function updatePoints(): Team
-    {
-        $this->played += 1;
-        return $this;
-    }
-
     public function pointsWon(): int {
         return $this->pointsWon;
     }
@@ -124,5 +118,6 @@ class Team extends Model
         $this->incrementPlayed();
         $this->updateStatusOfGame($teamScore, $againstTeamScore);
         $this->updateGoals($teamScore, $againstTeamScore);
+        return $this;
     }
 }
