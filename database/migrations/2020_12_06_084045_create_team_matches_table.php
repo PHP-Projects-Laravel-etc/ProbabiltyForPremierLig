@@ -17,8 +17,10 @@ class CreateTeamMatchesTable extends Migration
             $table->id();
             $table->integer('home_team_id');
             $table->integer('away_team_id');
-            $table->integer('home_team_score');
-            $table->integer('away_team_score');
+            $table->integer('home_team_score')->nullable();
+            $table->integer('away_team_score')->nullable();
+            $table->integer('week');
+            $table->boolean('played')->default(false);
             $table->timestamps();
         });
     }

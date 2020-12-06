@@ -17,7 +17,7 @@ class AgilityStatCalculator extends StatCalculator implements StatCalculatorInte
         return 2;
     }
 
-    public function getResult(): int
+    public function result(): int
     {
         return $this->point * $this->weight();
     }

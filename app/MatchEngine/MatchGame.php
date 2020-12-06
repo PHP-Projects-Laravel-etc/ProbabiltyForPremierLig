@@ -9,7 +9,7 @@ use App\MatchEngine\TeamStats\IntelligenceStatCalculator;
 use App\MatchEngine\TeamStats\StrengthStatCalculator;
 use App\Models\Team;
 
-class Match
+class MatchGame
 {
     /**
      * @var Team
@@ -26,12 +26,6 @@ class Match
         $this->awayTeam = $awayTeam;
     }
 
-    public function getProbabilityOfGame()
-    {
-        $homeTeamPower = $this->getPowerOfTeam($this->homeTeam);
-        $awayTeamPower = $this->getPowerOfTeam($this->awayTeam);
-
-    }
 
     public function getPowerOfTeam(Team $team): int
     {
@@ -53,7 +47,7 @@ class Match
         $score = 0;
         for ($i = 0; $i < $this->chancesToShoot($team); $i++) {
             if (rand(1, 100) > $this->chancesToSore($team)) {
-                $scorePoint++;
+                $score++;
             }
         }
         return $score;
@@ -67,6 +61,10 @@ class Match
             'scoreForHome' => $scoresForHome,
             'scoreForAway' => $scoresForAway,
         ];
+    }
+
+    public function updateFixture()
+    {
     }
 
 

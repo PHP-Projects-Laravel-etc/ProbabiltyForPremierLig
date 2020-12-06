@@ -23,7 +23,7 @@ class IntelligenceStatCalculator extends StatCalculator implements StatCalculato
         return 3;
     }
 
-    public function getResult(): int
+    public function result(): int
     {
         return $this->weight() + $this->statCalculator->weight();
     }

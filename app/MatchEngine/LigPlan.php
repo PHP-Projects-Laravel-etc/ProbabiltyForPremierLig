@@ -13,16 +13,17 @@ class LigPlan
         $plan = [];
         for ($i = 0; $i < count($teams); $i++) {
             $date = Carbon::now();
+            $date = 1;
             for ($j = 0; $j < count($teams); $j++) {
-                $date = $date->add('week',1);
                 if ($teams[$i] == $teams[$j]) {
                     continue;
                 }
                 $plan[] = [
                     'home_team_id' => $teams[$i],
                     'away_team_id' => $teams[$j],
-                    'match_date'   => $date,
+                    'week'   => $date,
                 ];
+                $date += 1;
             }
         }
         return $plan;

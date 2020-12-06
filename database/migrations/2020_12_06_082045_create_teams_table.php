@@ -19,6 +19,12 @@ class CreateTeamsTable extends Migration
             $table->integer('overall_strength');
             $table->integer('overall_agility');
             $table->integer('overall_intelligence');
+            $table->integer('played')->default(0);
+            $table->integer('won')->default(0);
+            $table->integer('drawn')->default(0);
+            $table->integer('lost')->default(0);
+            $table->integer('goals_for')->default(0);
+            $table->integer('goals_against')->default(0);
             $table->timestamps();
         });
     }

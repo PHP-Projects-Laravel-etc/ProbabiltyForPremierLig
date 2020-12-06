@@ -28,6 +28,8 @@ class StrengthStatCalculator implements StatCalculatorInterface
 
     public function result(): int
     {
-        return ($this->weight() * $this->point) + $this->statCalculator->getResult();
+        return ($this->weight() * $this->point) + $this->statCalculator->result();
     }
+
+
 }

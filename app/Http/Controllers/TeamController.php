@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class TeamController extends Controller
 {
+    public function runFactory() {
+        Team::factory()->create(['name' =>'Chealsea']);
+        Team::factory()->create(['name' =>'Liverpool']);
+        Team::factory()->create(['name' =>'Arsenal']);
+        Team::factory()->create(['name' =>'Manchester City']);
+    }
+
+
     public function index() {
         $teams = Team::all();
         return view('team.index')->with($teams);

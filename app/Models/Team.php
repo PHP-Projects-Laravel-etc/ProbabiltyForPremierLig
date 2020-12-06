@@ -16,6 +16,13 @@ use function GuzzleHttp\Psr7\_caseless_remove;
  * @property integer $overall_strength
  * @property integer $overall_agility
  * @property integer $overall_intelligence
+ * @property integer $played
+ * @property integer $won
+ * @property integer $drawn
+ * @property integer $lost
+ * @property integer $goals_for
+ * @property integer $goals_against
+ * @property integer $goal_difference
  * @property Carbon  $created_at
  * @property Carbon  $updated_at
  * @property string  $deleted_at
@@ -33,6 +40,13 @@ class Team extends Model
         'overall_strength'     => 'integer',
         'overall_agility'      => 'integer',
         'overall_intelligence' => 'integer',
+        'played'               => 'integer',
+        'won'                  => 'integer',
+        'drawn'                => 'integer',
+        'lost'                 => 'integer',
+        'goals_for'            => 'integer',
+        'goals_against'        => 'integer',
+        'goal_difference'      => 'integer',
     ];
 
     protected $fillable = [
@@ -40,16 +54,61 @@ class Team extends Model
         'overall_strength',
         'overall_agility',
         'overall_intelligence',
+        'overall_intelligence',
+        'played',
+        'won',
+        'drawn,',
+        'lost',
+        'goals_for',
+        'goals_against',
+        'goal_difference',
     ];
 
+    public function updateStatusOfGame($teamScore, $againstTeamScore): Team
+    {
+        $status = $teamScore - $againstTeamScore;
 
-    public function premierLigPlanHome() {
-        $this->hasMany(PremierLigPlan::class,'home_team_id','id');
+        switch ($status) {
+            case $status > 0:
+                $this->won += 1;
+                break;
+            case $status < 0:
+                $this->lost += 1;
+                break;
+            default:
+                $this->drawn += 1;
+        }
+        return $this;
+        /*if ($teamScore > $againstTeamScore) {
+            $this->won += 1;
+            return $this;
+        } else if ($teamScore < $againstTeamScore) {
+            $this->lost += 1;
+            return $this;
+        }
+        $this->drawn += 1;
+        return $this;*/
     }
 
-    public function premierLigPlanAway() {
-        $this->hasMany(PremierLigPlan::class,'away_team_id','id');
+    public function updateGoals($teamScore, $againstTeamScore): Team
+    {
+        $this->goals_for += $teamScore;
+        $this->goals_against += $againstTeamScore;
+        return $this;
+    }
+
+    public function incrementPlayed(): Team
+    {
+        $this->played += 1;
+        return $this;
     }
 
 
+
+    public function updateTeamStatus() {
+        $this->incrementPlayed();
+        $this->updateStatusOfGame();
+        $this->updateGoals();
+        $this->save();
+    }
 }
