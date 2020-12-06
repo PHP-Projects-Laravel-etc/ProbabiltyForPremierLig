@@ -14,6 +14,12 @@ class Simulation
     {
         $points = [];
         $average = [];
+
+        $teams = Team::all();
+        foreach ($teams as $team) {
+                $points[$team->name] = $team->points;
+                $average[$team->name] = $team->points;
+        }
         foreach ($matches as $match) {
             $homeTeam = $match->homeTeam;
             $awayTeam = $match->awayTeam;
