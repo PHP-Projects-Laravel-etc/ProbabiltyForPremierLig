@@ -43,10 +43,17 @@
                     </button>
                 </a>
             </div>
+            <div class="mol-md-4">
+                <form action="/createPlan" method="get">
+                    <button type="submit" class="btn btn-primary btn-block" formmethod="get">Create Plan</button>
+                </form>
+            </div>
+            <div class="col-md-4">
+                <form action="/emptyPlan" method="get">
+                    <button type="submit" class="btn btn-danger btn-block" formmethod="get">Empty Plan</button>
+                </form>
+            </div>
 
-            <form action="/createPlan" method="get">
-                <button type="submit" class="btn btn-primary btn-block" formmethod="get">Create Plan</button>
-            </form>
         </div>
     </div>
 @endsection

@@ -91,4 +91,9 @@ class PremierLigController extends Controller
         return view('simulation.index')->withTeams($resultPercentages);
 
     }
+
+    public function emptyPlan(){
+        TeamMatches::query()->truncate();
+        return back();
+    }
 }

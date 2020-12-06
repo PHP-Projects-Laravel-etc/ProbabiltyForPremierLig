@@ -18,6 +18,7 @@ Route::get('/teams', 'App\Http\Controllers\TeamController@index')->name('team.in
 
 
 Route::get('/createPlan', 'App\Http\Controllers\PremierLigController@createPlan')->name('plan.create');
+Route::get('/emptyPlan', 'App\Http\Controllers\PremierLigController@emptyPlan')->name('plan.empty');
 Route::get('/matches/{week?}', 'App\Http\Controllers\PremierLigController@getWeeksMatch')->name('match.index');
 Route::get('/runMatch/{week}', 'App\Http\Controllers\PremierLigController@runMatch')->name('match.run');
 Route::get('/runSimulation', 'App\Http\Controllers\PremierLigController@runSimulation')->name('match.simulation');
