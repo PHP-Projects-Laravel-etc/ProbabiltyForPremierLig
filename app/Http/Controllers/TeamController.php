@@ -14,10 +14,10 @@ class TeamController extends Controller
 
     public function store(Request $request) {
         $team = new Team();
-        $team->name = $request->name;
-        $team->overall_strength = $request->overallStrength;
-        $team->overall_agility = $request->agility;
-        $team->overall_intelligence = $request->overallIntelligence;
+        $team->name = $request->input('name');
+        $team->overall_strength = $request->input('overallStrength');
+        $team->overall_agility = $request->input('agility');
+        $team->overall_intelligence = $request->input('overallIntelligence');
         return view('team.index');
     }
 }
