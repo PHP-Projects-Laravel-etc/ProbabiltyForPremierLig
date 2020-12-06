@@ -29,7 +29,10 @@ class MatchGame
 
     public function getPowerOfTeam(Team $team): int
     {
-        return ( new StrengthStatCalculator(new IntelligenceStatCalculator(new AgilityStatCalculator($team->overall_agility), $team->overall_intelligence), $team->overall_strength) )->result();
+        $strength = new StrengthStatCalculator();
+        $agility = new AgilityStatCalculator();
+        $intelligence = new IntelligenceStatCalculator();
+        return ($team->overall_strength * $strength->weight() ) +  ($team->overall_agility * $agility->weight()) + ($team->overall_intelligence * $intelligence->weight());
     }
 
     public function chancesToShoot(Team $team): int
@@ -37,16 +40,16 @@ class MatchGame
         return $this->getPowerOfTeam($team) / 10;
     }
 
-    public function chancesToSore(Team $team): int
+    public function chancesToScore(Team $team): int
     {
-        return $this->getPowerOfTeam($team) / 15;
+        return $this->getPowerOfTeam($team) / 5;
     }
 
     public function runGameForTeam(Team $team): int
     {
         $score = 0;
         for ($i = 0; $i < $this->chancesToShoot($team); $i++) {
-            if (rand(1, 100) > $this->chancesToSore($team)) {
+            if (rand(1, 100) < $this->chancesToScore($team)) {
                 $score++;
             }
         }

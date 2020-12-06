@@ -68,4 +68,27 @@ class PremierLigController extends Controller
         }
         return view('match.index')->withMatches($matches);
     }
+
+
+    public function runSimulation()
+    {
+        $matches = TeamMatches::where('played', 0)->get();
+        if (!$matches) {
+            return 'There are no Matches Anymore';
+        }
+        $simulation = new Simulation();
+        $teams = $simulation->runSimulationForHundredTimesForProbability($matches);
+        arsort($teams);
+        $teamKeys = array_keys($teams);
+        $teamValues = array_values($teams);
+        $resultPercentages = [];
+        for ($i = 0; $i < count($teams); $i++) {
+            $resultPercentages[] = [
+                'Team'       => $teamKeys[$i],
+                'Percentage' => $teamValues[$i],
+            ];
+        }
+        return view('simulation.index')->withTeams($resultPercentages);
+
+    }
 }
