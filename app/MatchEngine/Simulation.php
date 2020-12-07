@@ -53,6 +53,9 @@ class Simulation
             if ($pointValues[1] == $pointValues[2]) {
                 return ( array_keys($average, max(array_splice($average,0,3))) );
             }
+            if ($pointValues[2] == $pointValues[3]) {
+                return ( array_keys($average, max(array_splice($average,0,4))) );
+            }
             return ( array_keys($average, max(array_splice($average,0,2))) );
         }
 
