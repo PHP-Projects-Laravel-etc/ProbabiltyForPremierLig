@@ -49,8 +49,8 @@ class PremierLigController extends Controller
             $matchToRun = new MatchGame($homeTeam, $awayTeam);
             $result = $matchToRun->runGame();
             $match->played = true;
-            $match->away_team_score = $result['scoreForHome'] ? : 0;
-            $match->home_team_score = $result['scoreForAway'] ? : 0;
+            $match->away_team_score = $result['scoreForAway'] ? : 0;
+            $match->home_team_score = $result['scoreForHome'] ? : 0;
             $match->save();
             $homeTeam->updateTeamStatus($match->home_team_score, $match->away_team_score);
             $awayTeam->updateTeamStatus($match->away_team_score, $match->home_team_score,);
