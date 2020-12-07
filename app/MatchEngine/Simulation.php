@@ -18,8 +18,9 @@ class Simulation
         $teams = Team::all();
         foreach ($teams as $team) {
             $points[$team->name] = $team->points;
-            $average[$team->name] = $team->points;
+            $average[$team->name] = $team->goals_for - $team->goals_against;
         }
+
         foreach ($matches as $match) {
             $homeTeam = $match->homeTeam;
             $awayTeam = $match->awayTeam;
@@ -47,9 +48,16 @@ class Simulation
         arsort($average);
         $pointValues = array_values($points);
         $averageValues = array_values($points);
+
         if ($pointValues[0] == $pointValues[1]) {
+            if ($pointValues[1] == $pointValues[2]) {
+                return ( array_keys($average, max(array_splice($average,0,3))) );
+            }
             return ( array_keys($average, max(array_splice($average,0,2))) );
         }
+
+
+
         return ( array_keys($points, max($points)) );
     }
 
