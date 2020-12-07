@@ -19,7 +19,7 @@ use function GuzzleHttp\Psr7\_caseless_remove;
  * @property integer $points
  * @property integer $played
  * @property integer $won
- * @property integer $drawn
+ * @property integer $draw
  * @property integer $lost
  * @property integer $goals_for
  * @property integer $goals_against
@@ -72,22 +72,19 @@ class Team extends Model
     public $pointsWon;
 
 
-    public function updateStatusOfGame($status): Team
+    public function updateStatusOfGame($teamScore, $againstTeamScore): Team
     {
-        switch ($status) {
-            case $status == 'WON':
-                $this->won += 1;
-                $this->pointsWon = 3;
-                $this->points += $this->pointsWon;
-                break;
-            case $status < 0:
-                $this->pointsWon = 0;
-                $this->lost += 1;
-                break;
-            default:
-                $this->draw += 1;
-                $this->pointsWon = 1;
-                $this->points += $this->pointsWon;
+        if($teamScore - $againstTeamScore > 0) {
+            $this->won += 1;
+            $this->pointsWon = 3;
+            $this->points += $this->pointsWon;
+        } else if($teamScore - $againstTeamScore < 0) {
+            $this->pointsWon = 0;
+            $this->lost += 1;
+        } else if($teamScore - $againstTeamScore == 0) {
+            $this->draw += 1;
+            $this->pointsWon = 1;
+            $this->points += $this->pointsWon;
         }
         return $this;
     }
