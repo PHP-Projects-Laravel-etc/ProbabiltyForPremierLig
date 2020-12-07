@@ -25,8 +25,8 @@ class Simulation
             $awayTeam = $match->awayTeam;
             $matchToRun = new MatchGame($homeTeam, $awayTeam);
             $result = $matchToRun->runGame();
-            $match->away_team_score = $result['scoreForHome'] ? : 0;
-            $match->home_team_score = $result['scoreForAway'] ? : 0;
+            $match->home_team_score = $result['scoreForHome'] ? : 0;
+            $match->away_team_score = $result['scoreForAway'] ? : 0;
             $homeTeam->updateTeamStatusWithoutSave($match->home_team_score, $match->away_team_score);
             $awayTeam->updateTeamStatusWithoutSave($match->away_team_score, $match->home_team_score);
             if (!isset($points[$homeTeam->name])) {
